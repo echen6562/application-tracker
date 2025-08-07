@@ -52,7 +52,7 @@ export default function JobList({ applications, onEdit, onDelete }: JobListProps
                   </span>
                 </td>
                 <td className="px-4 py-3 text-sm text-gray-700">
-                  {new Date(app.dateApplied).toLocaleDateString()}
+                  {String(app.dateApplied).split('T')[0]}
                 </td>
                 <td className="px-4 py-3 text-sm space-x-2">
                   <button onClick={() => onEdit(app)} className="text-blue-600 hover:text-blue-800 cursor-pointer">
@@ -83,7 +83,7 @@ export default function JobList({ applications, onEdit, onDelete }: JobListProps
             </div>
             
             <p className="text-xs text-gray-500 mb-3">
-              Applied: {new Date(app.dateApplied).toLocaleDateString()}
+              Applied: {String(app.dateApplied).split('T')[0]}
             </p>
             
             <div className="flex space-x-4">
