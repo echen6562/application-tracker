@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Job Application Tracker",
   description: "Track your job applications and their status",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
