@@ -4,7 +4,7 @@ Contains all TypeScript interfaces and types used throughout the application
  */
 
 // Import Prisma-generated types
-import { JobApplication as PrismaJobApplication, Status } from '../../generated/prisma';
+import { JobApplication as PrismaJobApplication, Status } from '@prisma/client';
 
 // Exporting Prisma types for easier imports
 export type JobApplicationStatus = Status;
