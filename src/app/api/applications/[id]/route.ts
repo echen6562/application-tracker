@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { updateApplication, deleteApplication } from '../../../lib/data';
 import { JobApplicationInput } from '../../../lib/types';
 import { getServerSession } from 'next-auth/next';
+import { authOptions } from '@/app/lib/auth';
 
 // PUT /api/applications/[id] | Update a specific job application by ID for a user
 export async function PUT(
@@ -15,7 +16,7 @@ export async function PUT(
 ) {
   try {
     // Check if user is authenticated
-    const session = await getServerSession();
+    const session = await getServerSession(authOptions);
     
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -55,7 +56,7 @@ export async function DELETE(
 ) {
   try {
     // Check if user is authenticated
-    const session = await getServerSession();
+    const session = await getServerSession(authOptions);
     
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

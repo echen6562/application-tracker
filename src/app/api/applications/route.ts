@@ -7,12 +7,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getApplications, createApplication } from '../../lib/data';
 import { JobApplicationInput } from '../../lib/types';
 import { getServerSession } from 'next-auth/next';
+import { authOptions } from '../../lib/auth';
 
 // GET /api/applications | Get all job applications for the authenticated user
 export async function GET() {
   try {
     // Check if user is authenticated
-    const session = await getServerSession();
+    const session = await getServerSession(authOptions);
     
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -33,7 +34,7 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     // Check if user is authenticated
-    const session = await getServerSession();
+    const session = await getServerSession(authOptions);
     
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

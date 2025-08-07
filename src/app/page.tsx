@@ -1,12 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useSession, signIn, signOut } from 'next-auth/react';
 import { JobApplication } from './lib/types';
 import JobList from './components/JobList';
 import JobModal from './components/JobModal';
 import DeleteDialog from './components/DeleteDialog';
 
 export default function Home() {
+  // NextAuth session hook
+  const { data: session, status } = useSession();
+
   // State for storing all Job Applications fetched from the database
   const [applications, setApplications] = useState<JobApplication[]>([]);
   // This controls whether the add/edit modal is visible
@@ -20,21 +24,28 @@ export default function Home() {
 
   // Fetch applications when component first loads
   useEffect(() => {
-    fetchApplications();
-  }, []);
+    if (session) {
+      fetchApplications();
+    } else {
+      setLoading(false);
+    }
+  }, [session]);
 
   // Fetches all applications from the API and updates the state
   const fetchApplications = async () => {
-    try {
-      const response = await fetch('/api/applications');
-      const data = await response.json();
-      setApplications(data);
-    } catch (error) {
-      console.error('Failed to fetch applications:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    const response = await fetch('/api/applications', {
+      credentials: 'include' // Add this line
+    });
+    const data = await response.json();
+    console.log('API Response:', data); 
+    setApplications(data);
+  } catch (error) {
+    console.error('Failed to fetch applications:', error);
+  } finally {
+    setLoading(false);
+  }
+};
 
   // Opens modal for adding new application
   const handleAdd = () => {
@@ -71,15 +82,84 @@ export default function Home() {
     }
   };
 
+  // Show loading while checking authentication status
+  if (status === "loading") {
+    return (
+      <div className="min-h-screen bg-gray-50 py-8 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-lg">Loading...</div>
+        </div>
+      </div>
+    );
+  }
+
+  // Show login page if user is not authenticated
+  if (!session) {
+    return (
+      <div className="min-h-screen bg-gray-50 py-8 flex items-center justify-center">
+        <div className="max-w-md w-full bg-white rounded-lg shadow p-6">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-gray-900 mb-2">Job Application Tracker</h1>
+            <p className="text-gray-600 mb-6">Sign in to track your job applications</p>
+            
+            <div className="space-y-4">
+              <button
+                onClick={() => signIn('google')}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium"
+              >
+                Sign in with Google
+              </button>
+              
+              <button
+                onClick={() => signIn('github')}
+                className="w-full bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg font-medium"
+              >
+                Sign in with GitHub
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-6xl mx-auto px-4">
         {/* Page Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Job Application Tracker</h1>
-          <p className="text-gray-600 mt-2">Track your job applications and their status</p>
+          {/* Desktop layout - shows on medium screens and up */}
+          <div className="hidden md:flex justify-between items-center">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">Job Application Tracker</h1>
+              <p className="text-gray-600 mt-2">Track your job applications and their status</p>
+            </div>
+            <div className="flex items-center space-x-4">
+              <span className="text-gray-700">Welcome, {session.user?.name || session.user?.email}</span>
+              <button
+                onClick={() => signOut()}
+                className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium"
+              >
+                Sign Out
+              </button>
+            </div>
+          </div>
+          
+          {/* Mobile layout - shows on small screens */}
+          <div className="md:hidden">
+            <div className="flex justify-between items-center mb-4">
+              <h1 className="text-2xl font-bold text-gray-900">Job Tracker</h1>
+              <button
+                onClick={() => signOut()}
+                className="bg-gray-600 hover:bg-gray-700 text-white px-3 py-2 rounded-lg font-medium text-sm"
+              >
+                Sign Out
+              </button>
+            </div>
+            <p className="text-gray-600 text-sm mb-2">Track your job applications and their status</p>
+            <p className="text-gray-700 text-sm">Welcome, {session.user?.name || session.user?.email}</p>
+          </div>
         </div>
-
         {/* Add New Application Button */}
         <div className="mb-6">
           <button

@@ -13,7 +13,7 @@ export default function DeleteDialog({ isOpen, onClose, onConfirm }: DeleteDialo
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 backdrop-blur-sm bg-black/50 flex items-center justify-center p-4">
       <div className="bg-white p-6 rounded">
         <p className="mb-4">Are you sure you want to delete this application?</p>
         <div className="flex gap-2">
