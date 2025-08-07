@@ -12,9 +12,11 @@ import { authOptions } from '@/app/lib/auth';
 // PUT /api/applications/[id] | Update a specific job application by ID for a user
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const params = await context.params;
+    
     // Check if user is authenticated
     const session = await getServerSession(authOptions);
     
@@ -52,9 +54,11 @@ export async function PUT(
 // DELETE /api/applications/[id] | Delete a specific job application by ID for a user
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const params = await context.params;
+    
     // Check if user is authenticated
     const session = await getServerSession(authOptions);
     
