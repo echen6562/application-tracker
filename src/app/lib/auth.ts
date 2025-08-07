@@ -1,6 +1,7 @@
-import NextAuth from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 import GitHubProvider from 'next-auth/providers/github'
+import type { Session, User } from 'next-auth'
+import type { JWT } from 'next-auth/jwt'
 
 /*
 Shared NextAuth configuration that can be used across the app
@@ -26,7 +27,7 @@ export const authOptions = {
   callbacks: {
     // Session callback - runs whenever we check if a user is logged in
     // Adds the user ID from the JWT token to the session object
-    session: async ({ session, token }: any) => {
+    session: async ({ session, token }: { session: Session; token: JWT }) => {
       if (session?.user) {
         session.user.id = token.sub!; // token.sub contains the user's unique ID
       }
@@ -34,7 +35,7 @@ export const authOptions = {
     },
     // JWT callback - runs whenever a JWT is created
     // Stores the user ID in the token for later use
-    jwt: async ({ user, token }: any) => {
+    jwt: async ({ user, token }: { user?: User; token: JWT }) => {
       if (user) {
         token.uid = user.id; // Store user ID in the token
       }

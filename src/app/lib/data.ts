@@ -38,7 +38,7 @@ export const updateApplication = async (
       },
       data
     });
-  } catch (error) {
+  } catch (_error) {
     return null; // If ID is not valid or user doesn't own the application
   }
 };
@@ -53,7 +53,7 @@ export const deleteApplication = async (id: string, userId: string): Promise<boo
       }
     });
     return true;
-  } catch (error) {
+  } catch (_error) {
     return false; // If ID is not valid or user doesn't own the application
   }
 };

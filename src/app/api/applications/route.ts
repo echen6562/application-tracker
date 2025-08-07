@@ -22,7 +22,7 @@ export async function GET() {
     // Get applications filtered by user ID
     const applications = await getApplications(session.user.id);
     return NextResponse.json(applications);
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       { error: 'Failed to fetch applications' },
       { status: 500 }
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
     // Create the application in the database
     const newApplication = await createApplication(applicationData);
     return NextResponse.json(newApplication, { status: 201 });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       { error: 'Failed to create application' },
       { status: 500 }

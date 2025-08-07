@@ -43,7 +43,7 @@ export async function PUT(
     }
     
     return NextResponse.json(updatedApplication);
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       { error: 'Failed to update application' },
       { status: 500 }
@@ -77,7 +77,7 @@ export async function DELETE(
     }
     
     return NextResponse.json({ message: 'Application deleted successfully' });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json(
       { error: 'Failed to delete application' },
       { status: 500 }
