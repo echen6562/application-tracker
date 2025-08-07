@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Job Application Tracker",
   description: "Track your job applications and their status",
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.svg',
   },
 };
 
