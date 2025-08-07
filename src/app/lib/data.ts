@@ -3,7 +3,7 @@ Database operations for job applications using Prisma ORM
 Provides CRUD operations with SQLite persistence
 */
 
-import { PrismaClient } from '../../generated/prisma';
+import { PrismaClient } from '@prisma/client';
 import { JobApplication, JobApplicationInput } from './types';
 
 // Initialize Prisma client
