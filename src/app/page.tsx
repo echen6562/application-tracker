@@ -33,19 +33,32 @@ export default function Home() {
 
   // Fetches all applications from the API and updates the state
   const fetchApplications = async () => {
-  try {
-    const response = await fetch('/api/applications', {
-      credentials: 'include' // Add this line
-    });
-    const data = await response.json();
-    console.log('API Response:', data); 
-    setApplications(data);
-  } catch (error) {
-    console.error('Failed to fetch applications:', error);
-  } finally {
-    setLoading(false);
-  }
-};
+    try {
+      const response = await fetch('/api/applications', {
+        credentials: 'include' // Add this line
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      console.log('API Response:', data); 
+      
+      // Make sure data is an array before setting it
+      if (Array.isArray(data)) {
+        setApplications(data);
+      } else {
+        console.error('API returned non-array data:', data);
+        setApplications([]);
+      }
+    } catch (error) {
+      console.error('Failed to fetch applications:', error);
+      setApplications([]); // Set empty array on error
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Opens modal for adding new application
   const handleAdd = () => {
