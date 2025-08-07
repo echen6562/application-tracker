@@ -4,14 +4,6 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
-/*
-  First, create and apply the migration to add the userId field
-  npx prisma migrate dev --name add-user-id
-
-  Then regenerate the Prisma client with the new types
-  npx prisma generate
-*/
-
 generator client {
   provider = "prisma-client-js"
 }
