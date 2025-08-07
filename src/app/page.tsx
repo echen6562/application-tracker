@@ -21,6 +21,8 @@ export default function Home() {
   const [deletingId, setDeletingId] = useState<string | null>(null);
   // Loading state for initial data fetch
   const [loading, setLoading] = useState(true);
+  // Search filter state
+  const [searchTerm, setSearchTerm] = useState('');
 
   // Fetch applications when component first loads
   useEffect(() => {
@@ -94,6 +96,12 @@ export default function Home() {
       setDeletingId(null); // Close the dialog
     }
   };
+
+  // Filter applications based on search term
+  const filteredApplications = applications.filter(app => 
+    app.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    app.role.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   // Show loading while checking authentication status
   if (status === "loading") {
@@ -183,12 +191,65 @@ export default function Home() {
           </button>
         </div>
 
+        {/* Search Bar */}
+        <div className="mb-6">
+          <div className="relative max-w-md">
+            <input
+              type="text"
+              placeholder="Search by company or role..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg
+                className="h-5 w-5 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
+            {searchTerm && (
+              <button
+                onClick={() => setSearchTerm('')}
+                className="absolute inset-y-0 right-0 pr-3 flex items-center"
+              >
+                <svg
+                  className="h-5 w-5 text-gray-400 hover:text-gray-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            )}
+          </div>
+          {searchTerm && (
+            <p className="text-sm text-gray-600 mt-2">
+              Showing {filteredApplications.length} of {applications.length} applications
+            </p>
+          )}
+        </div>
+
         {/* Main Content Area, shows loading or applications list */}
         {loading ? (
           <div className="text-center py-8">Loading...</div>
         ) : (
           <JobList
-            applications={applications}
+            applications={filteredApplications}
             onEdit={handleEdit}
             onDelete={handleDelete}
           />
