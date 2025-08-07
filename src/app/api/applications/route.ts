@@ -6,11 +6,20 @@ Handles GET (list all) and POST (create new) operations
 import { NextRequest, NextResponse } from 'next/server';
 import { getApplications, createApplication } from '../../lib/data';
 import { JobApplicationInput } from '../../lib/types';
+import { getServerSession } from 'next-auth/next';
 
-// GET /api/applications | Get all job applications
+// GET /api/applications | Get all job applications for the authenticated user
 export async function GET() {
   try {
-    const applications = await getApplications();
+    // Check if user is authenticated
+    const session = await getServerSession();
+    
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // Get applications filtered by user ID
+    const applications = await getApplications(session.user.id);
     return NextResponse.json(applications);
   } catch (error) {
     return NextResponse.json(
@@ -20,17 +29,27 @@ export async function GET() {
   }
 }
 
-// POST /api/applications | Create new job application
+// POST /api/applications | Create new job application for the authenticated user
 export async function POST(request: NextRequest) {
   try {
-    const body: JobApplicationInput = await request.json();
+    // Check if user is authenticated
+    const session = await getServerSession();
     
-    // Convert dateApplied string to Date object
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // Parse the request body
+    const body: Omit<JobApplicationInput, 'userId'> = await request.json();
+    
+    // Convert dateApplied string to Date object and add user ID from session
     const applicationData = {
       ...body,
-      dateApplied: new Date(body.dateApplied)
+      dateApplied: new Date(body.dateApplied),
+      userId: session.user.id // Add user ID from authenticated session
     };
     
+    // Create the application in the database
     const newApplication = await createApplication(applicationData);
     return NextResponse.json(newApplication, { status: 201 });
   } catch (error) {

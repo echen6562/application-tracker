@@ -48,7 +48,7 @@ export default function Home() {
     setIsModalOpen(true);
   };
 
-  // Handles deletion process by opening confirmaton dialog
+  // Handles deletion process by opening confirmation dialog
   const handleDelete = (id: string) => {
     setDeletingId(id);
   };
@@ -84,12 +84,11 @@ export default function Home() {
         <div className="mb-6">
           <button
             onClick={handleAdd}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium cursor-pointer"
           >
             Add New Application
           </button>
         </div>
-
 
         {/* Main Content Area, shows loading or applications list */}
         {loading ? (

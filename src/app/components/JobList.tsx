@@ -47,18 +47,18 @@ export default function JobList({ applications, onEdit, onDelete }: JobListProps
                 <td className="px-4 py-3 text-sm font-medium text-gray-900">{app.company}</td>
                 <td className="px-4 py-3 text-sm text-gray-700">{app.role}</td>
                 <td className="px-4 py-3 text-sm text-gray-700">
-                    <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(app.status)}`}>
-                        {app.status}
-                    </span>
+                  <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${getStatusColor(app.status)}`}>
+                    {app.status}
+                  </span>
                 </td>
                 <td className="px-4 py-3 text-sm text-gray-700">
                   {new Date(app.dateApplied).toLocaleDateString()}
                 </td>
                 <td className="px-4 py-3 text-sm space-x-2">
-                  <button onClick={() => onEdit(app)} className="text-blue-600 hover:text-blue-800">
+                  <button onClick={() => onEdit(app)} className="text-blue-600 hover:text-blue-800 cursor-pointer">
                     Edit
                   </button>
-                  <button onClick={() => onDelete(app.id)} className="text-red-600 hover:text-red-800">
+                  <button onClick={() => onDelete(app.id)} className="text-red-600 hover:text-red-800 cursor-pointer">
                     Delete
                   </button>
                 </td>
@@ -73,13 +73,13 @@ export default function JobList({ applications, onEdit, onDelete }: JobListProps
         {applications.map((app) => (
           <div key={app.id} className="p-4 border-b border-gray-200 last:border-b-0">
             <div className="flex justify-between items-start mb-2">
-                <div>
+              <div>
                 <h3 className="font-medium text-gray-900 text-sm">{app.company}</h3>
                 <p className="text-sm text-gray-600">{app.role}</p>
               </div>
-                <span className={`text-xs px-2 py-1 rounded font-medium ${getStatusColor(app.status)}`}>
+              <span className={`text-xs px-2 py-1 rounded font-medium ${getStatusColor(app.status)}`}>
                 {app.status}
-                </span>
+              </span>
             </div>
             
             <p className="text-xs text-gray-500 mb-3">
@@ -89,13 +89,13 @@ export default function JobList({ applications, onEdit, onDelete }: JobListProps
             <div className="flex space-x-4">
               <button 
                 onClick={() => onEdit(app)} 
-                className="text-blue-600 hover:text-blue-800 text-sm"
+                className="text-blue-600 hover:text-blue-800 text-sm cursor-pointer"
               >
                 Edit
               </button>
               <button 
                 onClick={() => onDelete(app.id)} 
-                className="text-red-600 hover:text-red-800 text-sm"
+                className="text-red-600 hover:text-red-800 text-sm cursor-pointer"
               >
                 Delete
               </button>

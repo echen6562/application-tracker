@@ -6,13 +6,21 @@ Handles PUT (update) and DELETE operations
 import { NextRequest, NextResponse } from 'next/server';
 import { updateApplication, deleteApplication } from '../../../lib/data';
 import { JobApplicationInput } from '../../../lib/types';
+import { getServerSession } from 'next-auth/next';
 
-// PUT /api/applications/[id] | Update a specific job application by ID
+// PUT /api/applications/[id] | Update a specific job application by ID for a user
 export async function PUT(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
+    // Check if user is authenticated
+    const session = await getServerSession();
+    
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const body: Partial<JobApplicationInput> = await request.json();
     
     // Convert dateApplied string to Date object if present
@@ -21,11 +29,12 @@ export async function PUT(
       ...(body.dateApplied && { dateApplied: new Date(body.dateApplied) })
     };
     
-    const updatedApplication = await updateApplication(params.id, updateData);
+    // Update application
+    const updatedApplication = await updateApplication(params.id, session.user.id, updateData);
     
     if (!updatedApplication) {
       return NextResponse.json(
-        { error: 'Application not found' },
+        { error: 'Application not found or unauthorized' },
         { status: 404 }
       );
     }
@@ -39,17 +48,25 @@ export async function PUT(
   }
 }
 
-// DELETE /api/applications/[id] | Delete a specific job application by ID
+// DELETE /api/applications/[id] | Delete a specific job application by ID for a user
 export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-    const success = await deleteApplication(params.id);
+    // Check if user is authenticated
+    const session = await getServerSession();
+    
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    // Delete application
+    const success = await deleteApplication(params.id, session.user.id);
     
     if (!success) {
       return NextResponse.json(
-        { error: 'Application not found' },
+        { error: 'Application not found or unauthorized' },
         { status: 404 }
       );
     }
