@@ -29,7 +29,7 @@ export default function JobList({ applications, onEdit, onDelete, allApplication
     return (
     <div className="p-4 text-center text-gray-200">
       <span role="img" aria-label="rocket">🚀</span> 
-      Houston, we've got a problem. 
+      Houston, we&#39;ve got a problem. 
       {allApplicationsCount === 0 ? (
         <span> No jobs applied to yet.</span>
       ) : (

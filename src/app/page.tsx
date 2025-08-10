@@ -6,6 +6,7 @@ import { JobApplication } from './lib/types';
 import JobList from './components/JobList';
 import JobModal from './components/JobModal';
 import DeleteDialog from './components/DeleteDialog';
+import Image from "next/image";
 
 export default function Home() {
   // NextAuth session hook
@@ -121,7 +122,7 @@ export default function Home() {
         <div className="max-w-md w-full bg-gray-900/90 rounded-lg shadow p-6">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-100 mb-2 flex items-center orbitron">
-              <img src="./favicon.png" className='w-8 h-8'/>
+              <Image src="/favicon.png" width={32} height={32} alt="Job Rocket logo" />
               Job Rocket
             </h1>
             <p className="text-gray-200 mb-6">Sign in to track your job applications</p>
@@ -156,7 +157,7 @@ export default function Home() {
           <div className="hidden md:flex justify-between items-center">
             <div>
               <h1 className="text-3xl font-bold text-gray-100 flex items-center orbitron">
-                <img src="./favicon.png" className='w-8 h-8'/>
+                <Image src="/favicon.png" width={32} height={32} alt="Job Rocket logo" />
                 Job Rocket
               </h1>
               <p className="text-gray-200 mt-2">Get ready for lift off, track your job applications and their status!</p>
@@ -176,7 +177,7 @@ export default function Home() {
           <div className="md:hidden">
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-2xl font-bold text-gray-100 flex items-center">
-                <img src="./favicon.png" className='w-8 h-8'/>
+                <Image src="/favicon.png" width={32} height={32} alt="Job Rocket logo" />
                 Job Rocket
               </h1>
               <button
