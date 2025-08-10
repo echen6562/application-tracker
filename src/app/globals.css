@@ -2,7 +2,7 @@
 
 body {
   background: linear-gradient(135deg, #0d0d2b 0%, #1a1a40 60%, #23234f 100%);
-  font-family: 'Exo';
+  font-family: 'Exo', 'Orbitron', 'Inter', Arial, Helvetica, sans-serif;
   min-height: 100vh;
 }
 
@@ -21,8 +21,8 @@ body {
 }
 
 .orbitron {
-  font-family: 'Orbitron', Arial, Helvetica, sans-serif;
+  font-family: 'Orbitron', 'Inter', Arial, Helvetica, sans-serif;
 }
 .exo {
-  font-family: 'Exo', Arial, Helvetica, sans-serif;
+  font-family: 'Exo', 'Inter', Arial, Helvetica, sans-serif;
 }
