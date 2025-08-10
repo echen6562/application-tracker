@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "./providers";
+import { exo, orbitron } from './lib/fonts';
 
 export const metadata: Metadata = {
   title: "Job Application Tracker",
@@ -16,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${exo.variable} ${orbitron.variable}`}>
       <body>
         <Providers>
           {children}

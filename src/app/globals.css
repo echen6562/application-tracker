@@ -6,23 +6,10 @@ body {
   min-height: 100vh;
 }
 
-@font-face {
-  font-family: 'Exo';
-  src: url('/fonts/exo.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Orbitron';
-  src: url('/fonts/orbitron-bold.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
-
 .orbitron {
-  font-family: 'Orbitron', 'Inter', Arial, Helvetica, sans-serif;
+  font-family: var(--font-orbitron), 'Inter', Arial, Helvetica, sans-serif;
 }
+
 .exo {
-  font-family: 'Exo', 'Inter', Arial, Helvetica, sans-serif;
+  font-family: var(--font-exo), 'Inter', Arial, Helvetica, sans-serif;
 }
