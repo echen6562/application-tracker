@@ -65,50 +65,59 @@ export default function JobModal({ isOpen, onClose, editingApp, onSave }: JobMod
   if (!isOpen) return null;
 
   return (
-      <div className="fixed inset-0 backdrop-blur-sm bg-black/50 flex items-center justify-center p-4">      <div className="bg-white p-6 rounded max-w-md w-full">
+    <div className="fixed inset-0 backdrop-blur-sm bg-black/50 flex items-center justify-center p-4">      
+      <div className="bg-gray-900/90 text-gray-100 p-6 rounded max-w-md w-full">
         <h2 className="text-xl mb-4">{editingApp ? 'Edit' : 'Add'} Application</h2>
-        
+      
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
             placeholder="Company"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounded placeholder-gray-500"
             required
           />
-          
+        
           <input
             type="text"
             placeholder="Role"
             value={role}
             onChange={(e) => setRole(e.target.value)}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border rounde placeholder-gray-500"
             required
           />
-          
-          <select
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
-            className="w-full p-2 border rounded cursor-pointer"
-          >
-            <option value="APPLIED">Applied</option>
-            <option value="INTERVIEW">Interview</option>
-            <option value="OFFER">Offer</option>
-            <option value="REJECTED">Rejected</option>
-            <option value="ACCEPTED">Accepted</option>
-          </select>
-          
+
+          <div className="relative">
+            <select
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+              className="w-full p-2 border rounded bg-black/40 cursor-pointer appearance-none"
+            >
+              <option value="APPLIED">Applied</option>
+              <option value="INTERVIEW">Interview</option>
+              <option value="OFFER">Offer</option>
+              <option value="REJECTED">Rejected</option>
+              <option value="ACCEPTED">Accepted</option>
+            </select>
+            <span className="pointer-events-none absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+              ▼
+            </span>
+          </div>
+        
           <input
             type="date"
             value={dateApplied}
             onChange={(e) => setDateApplied(e.target.value)}
-            className="w-full p-2 border rounded cursor-pointer"
+            className="w-full p-2 border rounded bg-black/40 cursor-pointer"
             required
+            style={{
+              colorScheme: "dark", 
+            }}
           />
-          
+        
           <div className="flex gap-2">
-            <button type="button" onClick={onClose} className="px-4 py-2 bg-gray-300 rounded cursor-pointer">
+            <button type="button" onClick={onClose} className="px-4 py-2 bg-gray-300 rounded cursor-pointer text-black">
               Cancel
             </button>
             <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded cursor-pointer">

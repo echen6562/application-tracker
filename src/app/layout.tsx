@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Job Application Tracker",
   description: "Track your job applications and their status",
   icons: {
-    icon: '/favicon.svg',
+    icon: '/favicon.png',
   },
 };
 
@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <Providers>
           {children}
         </Providers>

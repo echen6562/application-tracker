@@ -106,7 +106,7 @@ export default function Home() {
   // Show loading while checking authentication status
   if (status === "loading") {
     return (
-      <div className="min-h-screen bg-gray-50 py-8 flex items-center justify-center">
+      <div className="min-h-screen text-gray-200 bg-gray-50 py-8 flex items-center justify-center">
         <div className="text-center">
           <div className="text-lg">Loading...</div>
         </div>
@@ -117,23 +117,26 @@ export default function Home() {
   // Show login page if user is not authenticated
   if (!session) {
     return (
-      <div className="min-h-screen bg-gray-50 py-8 flex items-center justify-center">
-        <div className="max-w-md w-full bg-white rounded-lg shadow p-6">
+      <div className="min-h-screen py-8 flex items-center justify-center">
+        <div className="max-w-md w-full bg-gray-900/90 rounded-lg shadow p-6">
           <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">Job Application Tracker</h1>
-            <p className="text-gray-600 mb-6">Sign in to track your job applications</p>
+            <h1 className="text-2xl font-bold text-gray-100 mb-2 flex items-center orbitron">
+              <img src="./favicon.png" className='w-8 h-8'/>
+              Job Rocket
+            </h1>
+            <p className="text-gray-200 mb-6">Sign in to track your job applications</p>
             
             <div className="space-y-4">
               <button
                 onClick={() => signIn('google')}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium"
+                className="w-full bg-blue-700 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium cursor-pointer"
               >
                 Sign in with Google
               </button>
               
               <button
                 onClick={() => signIn('github')}
-                className="w-full bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg font-medium"
+                className="w-full bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium cursor-pointer"
               >
                 Sign in with GitHub
               </button>
@@ -145,23 +148,26 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen py-8">
       <div className="max-w-6xl mx-auto px-4">
         {/* Page Header */}
         <div className="mb-8">
           {/* Desktop layout - shows on medium screens and up */}
           <div className="hidden md:flex justify-between items-center">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Job Application Tracker</h1>
-              <p className="text-gray-600 mt-2">Track your job applications and their status</p>
+              <h1 className="text-3xl font-bold text-gray-100 flex items-center orbitron">
+                <img src="./favicon.png" className='w-8 h-8'/>
+                Job Rocket
+              </h1>
+              <p className="text-gray-200 mt-2">Get ready for lift off, track your job applications and their status!</p>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-gray-700">Welcome, {session.user?.name || session.user?.email}</span>
+              <span className="text-gray-200">Greetings, {session.user?.name || session.user?.email}</span>
               <button
                 onClick={() => signOut()}
-                className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium"
+                className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg font-medium cursor-pointer"
               >
-                Sign Out
+                Eject
               </button>
             </div>
           </div>
@@ -169,23 +175,26 @@ export default function Home() {
           {/* Mobile layout - shows on small screens */}
           <div className="md:hidden">
             <div className="flex justify-between items-center mb-4">
-              <h1 className="text-2xl font-bold text-gray-900">Job Tracker</h1>
+              <h1 className="text-2xl font-bold text-gray-100 flex items-center">
+                <img src="./favicon.png" className='w-8 h-8'/>
+                Job Rocket
+              </h1>
               <button
                 onClick={() => signOut()}
-                className="bg-gray-600 hover:bg-gray-700 text-white px-3 py-2 rounded-lg font-medium text-sm"
+                className="bg-gray-600 hover:bg-gray-700 text-white px-3 py-2 rounded-lg font-medium text-md cursor-pointer"
               >
-                Sign Out
+                Eject
               </button>
             </div>
-            <p className="text-gray-600 text-sm mb-2">Track your job applications and their status</p>
-            <p className="text-gray-700 text-sm">Welcome, {session.user?.name || session.user?.email}</p>
+            <p className="text-gray-200 text-md mb-2">Track your applications and their status</p>
+            <p className="text-gray-200 text-md">Greetings, {session.user?.name || session.user?.email}</p>
           </div>
         </div>
         {/* Add New Application Button */}
         <div className="mb-6">
           <button
             onClick={handleAdd}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium cursor-pointer"
+            className="bg-blue-600 hover:bg-purple-800 text-white px-4 py-2 rounded-lg font-medium cursor-pointer shadow"
           >
             Add New Application
           </button>
@@ -199,7 +208,7 @@ export default function Home() {
               placeholder="Search by company or role..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-300 text-gray-300"
             />
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <svg
@@ -238,7 +247,7 @@ export default function Home() {
             )}
           </div>
           {searchTerm && (
-            <p className="text-sm text-gray-600 mt-2">
+            <p className="text-sm text-gray-200 mt-2">
               Showing {filteredApplications.length} of {applications.length} applications
             </p>
           )}
@@ -246,12 +255,13 @@ export default function Home() {
 
         {/* Main Content Area, shows loading or applications list */}
         {loading ? (
-          <div className="text-center py-8">Loading...</div>
+          <div className="text-center py-8 text-gray-200">Loading...</div>
         ) : (
           <JobList
             applications={filteredApplications}
             onEdit={handleEdit}
             onDelete={handleDelete}
+            allApplicationsCount={applications.length}
           />
         )}
 

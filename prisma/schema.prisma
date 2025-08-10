@@ -4,15 +4,19 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+// Generator block tells Prisma to generate the Prisma Client JS for database access
 generator client {
   provider = "prisma-client-js"
 }
 
+// This datasource block configures the database connection for PostgreSQL and 
+// reads from the DATABASE_URL environment variable
 datasource db {
   provider = "postgresql"
   url = env("DATABASE_URL")
 }
 
+// Model representing a job application entry in the database
 model JobApplication {
   id String @id @default(cuid())
   company String
@@ -26,6 +30,7 @@ model JobApplication {
   @@map("job_applications")
 }
 
+// Enum representing possible statuses for a job application
 enum Status {
   APPLIED
   INTERVIEW
