@@ -8,14 +8,14 @@ body {
 
 @font-face {
   font-family: 'Exo';
-  src: url('/exo.ttf') format('truetype');
+  src: url('/fonts/exo.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Orbitron';
-  src: url('/orbitron-bold.ttf') format('truetype');
+  src: url('/fonts/orbitron-bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
