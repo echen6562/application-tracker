@@ -4,7 +4,7 @@ import { Providers } from "./providers";
 import { exo, orbitron } from './lib/fonts';
 
 export const metadata: Metadata = {
-  title: "Job Application Tracker",
+  title: "Job Rocket",
   description: "Track your job applications and their status",
   icons: {
     icon: '/favicon.png',
