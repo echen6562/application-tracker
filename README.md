@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Job Rocket - Application Tracker
 
-## Getting Started
+A full-stack web application designed to help job seekers efficiently track, organize, and monitor their job applications—all within a secure, minimalistic, and responsive dashboard.
 
-First, run the development server:
+![Job Rocket Screenshot](src/app/assets/images/jobRocket.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🎯 What is Job Rocket?
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Job Rocket** streamlines the job hunt by providing a clean and intuitive platform to log, search, and oversee your job applications. Whether you’re actively applying or passively browsing opportunities, Job Rocket keeps you organized and motivated, so you never lose track of your progress.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 🔐 **Secure authentication** — NextAuth.js for password, OAuth (Google/GitHub), and session security
+- 📋 **Application dashboard** — View all applications in one sleek, sortable table
+- 🏷️ **Real-time status tracking** — Mark applications as Applied, Offer, Accepted, or Rejected and edit with one click
+- 📅 **Automatic timestamps** — Track dates for accountability and reminders
+- 🔍 **Instant search** — Quickly find applications by company or job title with lightning-fast live search
+- 🖥️ **Responsive design** — Fully optimized for desktop and mobile, built with Tailwind CSS
+- ⚡ **Fast & reliable** — Hosted on Vercel for instant deployment and smooth user experience
+- 🗄️ **PostgreSQL database** — Robust, scalable storage for all your job data
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Frontend:** Next.js, React, TypeScript, Tailwind CSS
+- **Authentication:** NextAuth.js (OAuth, JWT, providers)
+- **Backend:** Next.js API routes, Prisma ORM
+- **Database:** PostgreSQL
+- **Deployment:** Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Live Demo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+[Try Job Rocket Now →](https://application-tracker-echen6562.vercel.app)
 
-## Deploy on Vercel
+## 📚 Usage
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Sign up or log in via OAuth (Google, GitHub, etc.)
+- Add new job applications via a simple form
+- Track and update application statuses in your dashboard
+- Search and filter to find specific roles or companies instantly
+- Edit or delete entries as your job search evolves
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛣️ Future Enhancements
+
+- Export applications as CSV or PDF
+- Analytics and insights dashboard
+
