@@ -2,7 +2,7 @@
 
 A full-stack web application designed to help job seekers efficiently track, organize, and monitor their job applications—all within a secure, minimalistic, and responsive dashboard.
 
-![Job Rocket Screenshot](src/app/assets/images/jobRocket.png)
+![Job Rocket Screenshot](https://github.com/user-attachments/assets/26e10758-5536-4543-a01a-edc042bd1cae)
 
 ## 🎯 What is Job Rocket?
 
