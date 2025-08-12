@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "./providers";
 import { exo, orbitron } from './lib/fonts';
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: "Job Rocket",
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body>
         <Providers>
           {children}
+          <Analytics />
         </Providers>
       </body>
     </html>
