@@ -77,6 +77,7 @@ export default function JobModal({ isOpen, onClose, editingApp, onSave }: JobMod
             onChange={(e) => setCompany(e.target.value)}
             className="w-full h-10 p-2 border border-gray-200 rounded text-gray-200 placeholder-gray-400"
             required
+            style={{ boxSizing: "border-box" }}
           />
         
           <input
@@ -84,8 +85,9 @@ export default function JobModal({ isOpen, onClose, editingApp, onSave }: JobMod
             placeholder="Role"
             value={role}
             onChange={(e) => setRole(e.target.value)}
-             className="w-full h-10 p-2 border border-gray-200 rounded text-gray-200 placeholder-gray-400"
+            className="w-full h-10 p-2 border border-gray-200 rounded text-gray-200 placeholder-gray-400"
             required
+            style={{ boxSizing: "border-box" }}
           />
 
           <div className="relative">
@@ -93,6 +95,7 @@ export default function JobModal({ isOpen, onClose, editingApp, onSave }: JobMod
               value={status}
               onChange={(e) => setStatus(e.target.value)}
               className="w-full h-10 p-2 border border-gray-200 rounded bg-black/40 text-gray-200 cursor-pointer appearance-none"
+              style={{ boxSizing: "border-box" }}
             >
               <option value="APPLIED">Applied</option>
               <option value="INTERVIEW">Interview</option>
@@ -112,7 +115,8 @@ export default function JobModal({ isOpen, onClose, editingApp, onSave }: JobMod
             className="w-full h-10 p-2 border border-gray-200 rounded bg-black/40 text-gray-200 cursor-pointer"
             required
             style={{
-              colorScheme: "dark", // Ensures white calendar icon on most browsers
+              boxSizing: "border-box",
+              colorScheme: "dark",
             }}
           />
         

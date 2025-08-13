@@ -123,7 +123,7 @@ export default function Home() {
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-100 mb-2 flex items-center orbitron">
               <Image src="/favicon.png" width={32} height={32} alt="Job Rocket logo" />
-              Job Rocketx
+              Job Rocket
             </h1>
             <p className="text-gray-200 mb-6">Sign in to track your job applications</p>
             
