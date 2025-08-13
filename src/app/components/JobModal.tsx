@@ -75,7 +75,7 @@ export default function JobModal({ isOpen, onClose, editingApp, onSave }: JobMod
             placeholder="Company"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
-            className="w-full p-2 border rounded placeholder-gray-500"
+            className="w-full h-10 p-2 border border-gray-200 rounded text-gray-200 placeholder-gray-400"
             required
           />
         
@@ -84,7 +84,7 @@ export default function JobModal({ isOpen, onClose, editingApp, onSave }: JobMod
             placeholder="Role"
             value={role}
             onChange={(e) => setRole(e.target.value)}
-            className="w-full p-2 border rounde placeholder-gray-500"
+             className="w-full h-10 p-2 border border-gray-200 rounded text-gray-200 placeholder-gray-400"
             required
           />
 
@@ -92,7 +92,7 @@ export default function JobModal({ isOpen, onClose, editingApp, onSave }: JobMod
             <select
               value={status}
               onChange={(e) => setStatus(e.target.value)}
-              className="w-full p-2 border rounded bg-black/40 cursor-pointer appearance-none"
+              className="w-full h-10 p-2 border border-gray-200 rounded bg-black/40 text-gray-200 cursor-pointer appearance-none"
             >
               <option value="APPLIED">Applied</option>
               <option value="INTERVIEW">Interview</option>
@@ -100,7 +100,7 @@ export default function JobModal({ isOpen, onClose, editingApp, onSave }: JobMod
               <option value="REJECTED">Rejected</option>
               <option value="ACCEPTED">Accepted</option>
             </select>
-            <span className="pointer-events-none absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+            <span className="pointer-events-none absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-200">
               ▼
             </span>
           </div>
@@ -109,10 +109,10 @@ export default function JobModal({ isOpen, onClose, editingApp, onSave }: JobMod
             type="date"
             value={dateApplied}
             onChange={(e) => setDateApplied(e.target.value)}
-            className="w-full p-2 border rounded bg-black/40 cursor-pointer"
+            className="w-full h-10 p-2 border border-gray-200 rounded bg-black/40 text-gray-200 cursor-pointer"
             required
             style={{
-              colorScheme: "dark", 
+              colorScheme: "dark", // Ensures white calendar icon on most browsers
             }}
           />
         
