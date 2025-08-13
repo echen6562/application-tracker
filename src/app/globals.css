@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 body {
-  background: linear-gradient(135deg, #0d0d2b 0%, #1a1a40 60%, #23234f 100%);
+  background: linear-gradient(135deg, #0b0b31 0%, #1a103d 40%, #3a1857 80%, #5a2480 95%);
   font-family: 'Exo', 'Orbitron', 'Inter', Arial, Helvetica, sans-serif;
   min-height: 100vh;
+  cursor: url('/cursor.svg'), auto;
 }
 
 .orbitron {
