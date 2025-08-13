@@ -15,3 +15,8 @@ body {
 .exo {
   font-family: var(--font-exo), 'Inter', Arial, Helvetica, sans-serif;
 }
+
+input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+}
