@@ -5,6 +5,7 @@ body {
   font-family: 'Exo', 'Orbitron', 'Inter', Arial, Helvetica, sans-serif;
   min-height: 100vh;
   cursor: url('/cursor.svg'), auto;
+  overflow: hidden;
 }
 
 .orbitron {
