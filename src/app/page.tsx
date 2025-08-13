@@ -107,7 +107,7 @@ export default function Home() {
   // Show loading while checking authentication status
   if (status === "loading") {
     return (
-      <div className="h-screen overflow-hidden text-gray-200 bg-gray-50 py-8 flex items-center justify-center">
+      <div className="fixed inset-0 text-gray-200 bg-gray-50 py-8 flex items-center justify-center z-50">
         <div className="text-center">
           <div className="text-lg">Loading...</div>
         </div>
@@ -118,12 +118,12 @@ export default function Home() {
   // Show login page if user is not authenticated
   if (!session) {
     return (
-      <div className="h-screen py-8 overflow-hidden flex items-center justify-center">
+      <div className="fixed inset-0 py-8 flex items-center justify-center z-50">
         <div className="max-w-md w-full bg-gray-900/90 rounded-lg shadow p-6">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-100 mb-2 flex items-center orbitron">
               <Image src="/favicon.png" width={32} height={32} alt="Job Rocket logo" />
-              Job Rocket
+              Job Rocketx
             </h1>
             <p className="text-gray-200 mb-6">Sign in to track your job applications</p>
             
@@ -149,7 +149,7 @@ export default function Home() {
   }
 
   return (
-    <div className="h-screen overflow-auto py-8">
+    <div className="fixed inset-0 overflow-auto py-8">
       <div className="max-w-6xl mx-auto px-4">
         {/* Page Header */}
         <div className="mb-8">
