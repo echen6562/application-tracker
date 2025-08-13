@@ -69,7 +69,7 @@ export default function JobModal({ isOpen, onClose, editingApp, onSave }: JobMod
       <div className="bg-gray-900/90 text-gray-100 p-6 rounded max-w-md w-full">
         <h2 className="text-xl mb-4">{editingApp ? 'Edit' : 'Add'} Application</h2>
       
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <input
             type="text"
             placeholder="Company"
@@ -77,7 +77,6 @@ export default function JobModal({ isOpen, onClose, editingApp, onSave }: JobMod
             onChange={(e) => setCompany(e.target.value)}
             className="w-full h-10 p-2 border border-gray-200 rounded text-gray-200 placeholder-gray-400"
             required
-            style={{ boxSizing: "border-box" }}
           />
         
           <input
@@ -87,7 +86,6 @@ export default function JobModal({ isOpen, onClose, editingApp, onSave }: JobMod
             onChange={(e) => setRole(e.target.value)}
             className="w-full h-10 p-2 border border-gray-200 rounded text-gray-200 placeholder-gray-400"
             required
-            style={{ boxSizing: "border-box" }}
           />
 
           <div className="relative">
@@ -95,7 +93,6 @@ export default function JobModal({ isOpen, onClose, editingApp, onSave }: JobMod
               value={status}
               onChange={(e) => setStatus(e.target.value)}
               className="w-full h-10 p-2 border border-gray-200 rounded bg-black/40 text-gray-200 cursor-pointer appearance-none"
-              style={{ boxSizing: "border-box" }}
             >
               <option value="APPLIED">Applied</option>
               <option value="INTERVIEW">Interview</option>
@@ -112,10 +109,9 @@ export default function JobModal({ isOpen, onClose, editingApp, onSave }: JobMod
             type="date"
             value={dateApplied}
             onChange={(e) => setDateApplied(e.target.value)}
-            className="w-full h-10 p-2 border border-gray-200 rounded bg-black/40 text-gray-200 cursor-pointer"
+            className="w-full max-w-full h-10 p-2 border border-gray-200 rounded bg-black/40 text-gray-200 cursor-pointer"
             required
             style={{
-              boxSizing: "border-box",
               colorScheme: "dark",
             }}
           />
